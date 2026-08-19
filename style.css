@@ -1,0 +1,1192 @@
+/* =========================================================
+   ADVANCED CSS3 & RESPONSIVE ARCHITECTURE
+   Monishwaran D Portfolio
+========================================================= */
+
+
+/* =========================================================
+   1. CSS VARIABLES
+========================================================= */
+
+:root {
+
+    --color-primary: #2563eb;
+    --color-primary-dark: #1d4ed8;
+
+    --color-background: #ffffff;
+    --color-surface: #f8fafc;
+    --color-surface-alt: #eff6ff;
+
+    --color-text: #172033;
+    --color-text-muted: #64748b;
+
+    --color-border: #dbe3ee;
+
+    --color-header: #0f172a;
+    --color-header-text: #ffffff;
+
+    --shadow-small:
+        0 4px 12px rgba(15, 23, 42, 0.08);
+
+    --shadow-large:
+        0 18px 45px rgba(15, 23, 42, 0.12);
+
+    --radius-small: 8px;
+    --radius-large: 18px;
+
+    --max-width: 1120px;
+
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 2.5rem;
+    --space-xl: 4rem;
+
+    --transition:
+        180ms ease;
+}
+
+
+/* =========================================================
+   2. DARK MODE
+========================================================= */
+
+@media (prefers-color-scheme: dark) {
+
+    :root {
+
+        --color-background: #0f172a;
+        --color-surface: #111c31;
+        --color-surface-alt: #172554;
+
+        --color-text: #e5e7eb;
+        --color-text-muted: #a8b3c7;
+
+        --color-border: #334155;
+
+        --color-header: #020617;
+
+        --shadow-small:
+            0 4px 12px rgba(0, 0, 0, 0.25);
+
+        --shadow-large:
+            0 18px 45px rgba(0, 0, 0, 0.35);
+    }
+}
+
+
+/* =========================================================
+   3. RESET
+========================================================= */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    margin: 0;
+
+    min-height: 100vh;
+
+    font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    line-height: 1.6;
+
+    color: var(--color-text);
+
+    background:
+        var(--color-background);
+
+    transition:
+        background-color var(--transition),
+        color var(--transition);
+}
+
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+a {
+    color: var(--color-primary);
+}
+
+
+button,
+input,
+textarea {
+    font: inherit;
+}
+
+
+/* =========================================================
+   4. ACCESSIBILITY
+========================================================= */
+
+.skip-link {
+
+    position: absolute;
+
+    left: 1rem;
+    top: -100px;
+
+    z-index: 9999;
+
+    padding: 0.75rem 1rem;
+
+    background: #000000;
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-weight: 700;
+
+    border-radius: var(--radius-small);
+}
+
+
+.skip-link:focus {
+    top: 1rem;
+}
+
+
+:focus-visible {
+
+    outline:
+        3px solid #f59e0b;
+
+    outline-offset: 4px;
+}
+
+
+/* =========================================================
+   5. CONTAINER
+========================================================= */
+
+.container {
+
+    width: min(
+        92%,
+        var(--max-width)
+    );
+
+    margin-inline: auto;
+}
+
+
+/* =========================================================
+   6. HEADER + FLEXBOX
+========================================================= */
+
+.site-header {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
+
+    background:
+        var(--color-header);
+
+    box-shadow:
+        var(--shadow-small);
+}
+
+
+.navbar {
+
+    min-height: 72px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    justify-content: center;
+
+    gap: 0.75rem;
+
+}
+
+
+.logo {
+
+    color:
+        var(--color-header-text);
+
+    text-decoration: none;
+
+    font-size: 1.25rem;
+
+    font-weight: 800;
+
+    letter-spacing: -0.02em;
+}
+
+
+.nav-list {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 0.35rem;
+
+    padding: 0;
+
+    margin: 0;
+
+    list-style: none;
+}
+
+
+.nav-list a {
+
+    display: block;
+
+    padding: 0.45rem 0.7rem;
+
+    color:
+        var(--color-header-text);
+
+    text-decoration: none;
+
+    border-radius: 6px;
+
+    font-weight: 600;
+
+    transition:
+        background-color var(--transition);
+}
+
+
+.nav-list a:hover,
+.nav-list a[aria-current="page"] {
+
+    background:
+        rgba(255, 255, 255, 0.14);
+
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   7. HERO
+   CSS GRID
+========================================================= */
+
+.hero {
+
+    min-height: 85vh;
+
+    display: grid;
+
+    align-items: center;
+
+    background:
+
+        radial-gradient(
+            circle at top right,
+            var(--color-surface-alt),
+            transparent 45%
+        ),
+
+        var(--color-background);
+}
+
+
+.hero-grid {
+
+    display: grid;
+
+    gap: var(--space-xl);
+
+    padding-block: 5rem;
+}
+
+
+.hero-content {
+    max-width: 720px;
+}
+
+
+.eyebrow {
+
+    margin: 0 0 0.75rem;
+
+    color:
+        var(--color-primary);
+
+    font-size: 0.8rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.12em;
+
+    text-transform: uppercase;
+}
+
+
+.hero h1 {
+
+    margin: 0;
+
+    font-size:
+        clamp(2.7rem, 10vw, 5.5rem);
+
+    line-height: 0.98;
+
+    letter-spacing: -0.06em;
+}
+
+
+.hero h1 span {
+
+    display: block;
+
+    color:
+        var(--color-primary);
+}
+
+
+.hero-text {
+
+    max-width: 650px;
+
+    margin-block: 1.75rem;
+
+    color:
+        var(--color-text-muted);
+
+    font-size:
+        clamp(1rem, 2vw, 1.2rem);
+}
+
+
+.button-group {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 0.75rem;
+}
+
+
+.button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 46px;
+
+    padding:
+        0.7rem 1.2rem;
+
+    border:
+        2px solid transparent;
+
+    border-radius:
+        var(--radius-small);
+
+    font-weight: 700;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition:
+        transform var(--transition),
+        background-color var(--transition),
+        color var(--transition);
+}
+
+
+.button:hover {
+
+    transform:
+        translateY(-2px);
+}
+
+
+.primary-button {
+
+    background:
+        var(--color-primary);
+
+    color: #ffffff;
+}
+
+
+.primary-button:hover {
+
+    background:
+        var(--color-primary-dark);
+}
+
+
+.secondary-button {
+
+    border-color:
+        var(--color-primary);
+
+    background:
+        transparent;
+
+    color:
+        var(--color-primary);
+}
+
+
+.secondary-button:hover {
+
+    background:
+        var(--color-surface-alt);
+}
+
+
+/* =========================================================
+   8. HERO CARD
+========================================================= */
+
+.hero-card {
+
+    padding:
+        var(--space-lg);
+
+    background:
+        var(--color-surface);
+
+    border:
+        1px solid var(--color-border);
+
+    border-radius:
+        var(--radius-large);
+
+    box-shadow:
+        var(--shadow-large);
+
+    text-align: center;
+}
+
+
+.profile-circle {
+
+    width: 120px;
+    aspect-ratio: 1;
+
+    display: grid;
+
+    place-items: center;
+
+    margin: 0 auto 1.5rem;
+
+    border-radius: 50%;
+
+    background:
+        var(--color-primary);
+
+    color: #ffffff;
+
+    font-size: 2rem;
+
+    font-weight: 900;
+}
+
+
+.hero-card h2 {
+    margin-bottom: 0.5rem;
+}
+
+
+.hero-card p {
+    margin: 0;
+    color: var(--color-text-muted);
+}
+
+
+/* =========================================================
+   9. GENERAL SECTIONS
+========================================================= */
+
+.section {
+
+    padding-block:
+        clamp(4rem, 8vw, 7rem);
+}
+
+
+.section-heading {
+
+    max-width: 700px;
+
+    margin-bottom:
+        var(--space-lg);
+}
+
+
+.section-heading h2,
+.about-content h2,
+.skills-panel h2 {
+
+    margin-top: 0;
+
+    font-size:
+        clamp(2rem, 5vw, 3rem);
+
+    line-height: 1.1;
+}
+
+
+.section-heading p:not(.eyebrow) {
+
+    color:
+        var(--color-text-muted);
+}
+
+
+/* =========================================================
+   10. FEATURE GRID
+   CSS GRID
+========================================================= */
+
+.feature-grid {
+
+    display: grid;
+
+    gap: var(--space-md);
+}
+
+
+.feature-card {
+
+    padding:
+        var(--space-lg);
+
+    background:
+        var(--color-surface);
+
+    border:
+        1px solid var(--color-border);
+
+    border-radius:
+        var(--radius-large);
+
+    box-shadow:
+        var(--shadow-small);
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition);
+}
+
+
+.feature-card:hover {
+
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        var(--shadow-large);
+}
+
+
+.card-icon {
+
+    width: 48px;
+    height: 48px;
+
+    display: grid;
+
+    place-items: center;
+
+    margin-bottom: 1.25rem;
+
+    background:
+        var(--color-primary);
+
+    color: #ffffff;
+
+    border-radius:
+        var(--radius-small);
+
+    font-weight: 800;
+}
+
+
+.feature-card h3 {
+    margin-bottom: 0.75rem;
+}
+
+
+.feature-card p {
+
+    margin: 0;
+
+    color:
+        var(--color-text-muted);
+}
+
+
+/* =========================================================
+   11. PAGE HERO
+========================================================= */
+
+.page-hero {
+
+    padding-block:
+        5rem;
+
+    background:
+        var(--color-surface);
+}
+
+
+.page-hero h1 {
+
+    margin: 0 0 1rem;
+
+    font-size:
+        clamp(2.5rem, 7vw, 4.5rem);
+
+    line-height: 1;
+}
+
+
+.page-hero p:not(.eyebrow) {
+
+    max-width: 650px;
+
+    margin: 0;
+
+    color:
+        var(--color-text-muted);
+
+    font-size: 1.1rem;
+}
+
+
+/* =========================================================
+   12. ABOUT GRID
+========================================================= */
+
+.about-grid {
+
+    display: grid;
+
+    gap: var(--space-xl);
+}
+
+
+.about-content p {
+
+    max-width: 700px;
+
+    color:
+        var(--color-text-muted);
+}
+
+
+.about-content h2:not(:first-child) {
+
+    margin-top:
+        3rem;
+}
+
+
+.skills-panel {
+
+    align-self: start;
+
+    padding:
+        var(--space-lg);
+
+    background:
+        var(--color-surface);
+
+    border:
+        1px solid var(--color-border);
+
+    border-radius:
+        var(--radius-large);
+
+    box-shadow:
+        var(--shadow-small);
+}
+
+
+.skills-list {
+
+    display: grid;
+
+    gap: 0.75rem;
+
+    padding: 0;
+
+    margin: 0;
+
+    list-style: none;
+}
+
+
+.skills-list li {
+
+    padding:
+        0.75rem 1rem;
+
+    border:
+        1px solid var(--color-border);
+
+    border-radius:
+        var(--radius-small);
+
+    background:
+        var(--color-background);
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   13. PROJECT GRID
+========================================================= */
+
+.project-grid {
+
+    display: grid;
+
+    gap: var(--space-md);
+}
+
+
+.project-card {
+
+    min-height: 330px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    padding:
+        var(--space-lg);
+
+    background:
+        var(--color-surface);
+
+    border:
+        1px solid var(--color-border);
+
+    border-radius:
+        var(--radius-large);
+
+    box-shadow:
+        var(--shadow-small);
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition);
+}
+
+
+.project-card:hover {
+
+    transform:
+        translateY(-6px);
+
+    box-shadow:
+        var(--shadow-large);
+}
+
+
+.project-number {
+
+    color:
+        var(--color-primary);
+
+    font-size: 0.8rem;
+
+    font-weight: 800;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.1em;
+}
+
+
+.project-card h2 {
+
+    margin-block:
+        0.75rem 1rem;
+}
+
+
+.project-card p {
+
+    color:
+        var(--color-text-muted);
+}
+
+
+.tags {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 0.5rem;
+}
+
+
+.tags span {
+
+    padding:
+        0.35rem 0.65rem;
+
+    border:
+        1px solid var(--color-border);
+
+    border-radius: 999px;
+
+    color:
+        var(--color-text-muted);
+
+    font-size: 0.8rem;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   14. CONTACT GRID
+========================================================= */
+
+.contact-grid {
+
+    display: grid;
+
+    gap: var(--space-xl);
+}
+
+
+.contact-info p {
+
+    max-width: 500px;
+
+    color:
+        var(--color-text-muted);
+}
+
+
+.contact-item {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 0.25rem;
+
+    margin-top: 1.5rem;
+}
+
+
+.contact-item a {
+
+    width: fit-content;
+}
+
+
+/* =========================================================
+   15. CONTACT FORM
+========================================================= */
+
+.contact-form {
+
+    padding:
+        var(--space-lg);
+
+    background:
+        var(--color-surface);
+
+    border:
+        1px solid var(--color-border);
+
+    border-radius:
+        var(--radius-large);
+
+    box-shadow:
+        var(--shadow-small);
+}
+
+
+.form-group {
+
+    margin-bottom:
+        1.25rem;
+}
+
+
+.form-group label {
+
+    display: block;
+
+    margin-bottom:
+        0.5rem;
+
+    font-weight: 700;
+}
+
+
+.form-group input,
+.form-group textarea {
+
+    width: 100%;
+
+    padding:
+        0.8rem 0.9rem;
+
+    border:
+        2px solid var(--color-border);
+
+    border-radius:
+        var(--radius-small);
+
+    background:
+        var(--color-background);
+
+    color:
+        var(--color-text);
+
+    transition:
+        border-color var(--transition);
+}
+
+
+.form-group textarea {
+
+    min-height: 160px;
+
+    resize: vertical;
+}
+
+
+.form-group input:focus,
+.form-group textarea:focus {
+
+    border-color:
+        var(--color-primary);
+
+    outline: none;
+}
+
+
+/* =========================================================
+   16. FOOTER
+========================================================= */
+
+.site-footer {
+
+    padding-block:
+        2rem;
+
+    background:
+        var(--color-header);
+
+    color:
+        #ffffff;
+}
+
+
+.footer-content {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 1rem;
+
+    text-align: center;
+}
+
+
+.footer-content p {
+    margin: 0;
+}
+
+
+.footer-nav {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 1rem;
+
+    padding: 0;
+
+    margin: 0;
+
+    list-style: none;
+}
+
+
+.footer-nav a {
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   17. TABLET
+========================================================= */
+
+@media (min-width: 700px) {
+
+    .navbar {
+
+        flex-direction: row;
+
+        align-items: center;
+
+        justify-content: space-between;
+    }
+
+
+    .hero-grid {
+
+        grid-template-columns:
+            1.5fr 1fr;
+
+        align-items: center;
+    }
+
+
+    .feature-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .about-grid {
+
+        grid-template-columns:
+            1.5fr 1fr;
+
+        align-items: start;
+    }
+
+
+    .project-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .contact-grid {
+
+        grid-template-columns:
+            0.8fr 1.2fr;
+
+        align-items: start;
+    }
+
+
+    .contact-item {
+
+        flex-direction: column;
+    }
+
+
+    .footer-content {
+
+        flex-direction: row;
+
+        justify-content: space-between;
+
+        text-align: left;
+    }
+}
+
+
+/* =========================================================
+   18. DESKTOP
+========================================================= */
+
+@media (min-width: 1000px) {
+
+    .feature-grid {
+
+        grid-template-columns:
+            repeat(3, 1fr);
+    }
+
+
+    .project-grid {
+
+        grid-template-columns:
+            repeat(3, 1fr);
+    }
+
+
+    .hero-grid {
+
+        gap: 6rem;
+    }
+}
+
+
+/* =========================================================
+   19. REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            0.01ms !important;
+
+        scroll-behavior:
+            auto !important;
+    }
+}
